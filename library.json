@@ -1,0 +1,12 @@
+{
+    "id": "{06B203CE-B940-4E9A-9500-F6A5117A42D0}",
+    "author": "Manuel Bruckmoser",
+    "name": "Aqara FP2 (HomeKit lokal)",
+    "url": "https://github.com/badfrog18/symcon-aqarafp2",
+    "compatibility": {
+        "version": "7.0"
+    },
+    "version": "1.0",
+    "build": 1,
+    "date": 1794240000
+}

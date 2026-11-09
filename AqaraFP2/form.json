@@ -1,0 +1,31 @@
+{
+    "elements": [
+        { "type": "Label", "caption": "Lokale Anbindung des Aqara FP2 über HomeKit (HAP) – ohne Cloud und ohne Home Assistant." },
+        { "type": "ValidationTextBox", "name": "Host", "caption": "IP-Adresse des FP2" },
+        { "type": "NumberSpinner", "name": "Port", "caption": "HomeKit-Port (0 = automatisch per mDNS)", "minimum": 0, "maximum": 65535 },
+        { "type": "NumberSpinner", "name": "Interval", "caption": "Abfrageintervall", "suffix": "s", "minimum": 1, "maximum": 3600 }
+    ],
+    "actions": [
+        { "type": "Label", "name": "PairingInfo", "caption": "" },
+        { "type": "Button", "caption": "Gerät suchen (mDNS)", "onClick": "echo AQFP2_Discover($id);" },
+        {
+            "type": "ExpansionPanel",
+            "caption": "Kopplung",
+            "items": [
+                { "type": "Label", "caption": "Der FP2 muss vorher aus Home Assistant bzw. Apple Home entfernt werden. Den Setup-Code findest du auf dem Gerät oder in der Aqara-App." },
+                { "type": "ValidationTextBox", "name": "SetupCode", "caption": "HomeKit-Setup-Code (123-45-678)" },
+                { "type": "Button", "caption": "Koppeln", "onClick": "echo AQFP2_Pair($id, $SetupCode);" },
+                { "type": "Button", "caption": "Entkoppeln", "confirm": "Kopplung am FP2 wirklich entfernen?", "onClick": "echo AQFP2_Unpair($id);" },
+                { "type": "Button", "caption": "Kopplungsdaten verwerfen (nur lokal)", "confirm": "Gespeicherte Kopplungsdaten löschen? Der FP2 selbst bleibt gekoppelt, bis er zurückgesetzt wird.", "onClick": "AQFP2_ForgetPairing($id); echo 'Lokale Kopplungsdaten gelöscht.';" }
+            ]
+        },
+        { "type": "Button", "caption": "Variablen neu einlesen", "onClick": "echo AQFP2_RebuildVariables($id);" },
+        { "type": "Button", "caption": "Jetzt aktualisieren", "onClick": "AQFP2_Update($id); echo 'Aktualisiert.';" }
+    ],
+    "status": [
+        { "code": 102, "icon": "active", "caption": "Verbunden" },
+        { "code": 201, "icon": "inactive", "caption": "Nicht gekoppelt" },
+        { "code": 202, "icon": "error", "caption": "FP2 nicht erreichbar" },
+        { "code": 203, "icon": "error", "caption": "Kopplung ungültig – neu koppeln" }
+    ]
+}

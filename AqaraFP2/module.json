@@ -1,0 +1,12 @@
+{
+    "id": "{18390369-9FAA-4857-AD8B-E5F166B5B02D}",
+    "name": "AqaraFP2",
+    "type": 3,
+    "vendor": "Aqara",
+    "aliases": ["Aqara FP2 Präsenzsensor"],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "AQFP2",
+    "url": "https://github.com/badfrog18/symcon-aqarafp2"
+}
